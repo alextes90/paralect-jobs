@@ -1,0 +1,20 @@
+.input {
+  border-radius: 8px;
+  height: 48px;
+  width: 773px;
+
+  button {
+    height: 30px;
+    border-radius: 8px;
+    padding: 2px 20px;
+    margin-left: -60px;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    width: 315px;
+    button {
+      padding: 2px 10px;
+      margin-left: -30px;
+    }
+  }
+}

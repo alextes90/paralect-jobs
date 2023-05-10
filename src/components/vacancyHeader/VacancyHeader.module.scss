@@ -1,0 +1,75 @@
+.container {
+  color: inherit;
+  text-decoration: inherit;
+  min-height: 157px;
+  width: 773px;
+  border-radius: 12px;
+  padding: 24px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: space-between;
+
+  h4 {
+    color: #232134;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 0em;
+  }
+
+  .town_container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    div {
+      color: #232134;
+    }
+  }
+
+  .salary_title {
+    color: #232134;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+  }
+
+  .salary_container {
+    color: #232134;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0px;
+  }
+
+  .point {
+    color: #7b7c88;
+    width: 10px;
+    padding: 0px 14px;
+  }
+
+  .header_container {
+    display: flex;
+    justify-content: space-between;
+    div {
+      height: 24px;
+      border-radius: 50%;
+    }
+    div:hover {
+      cursor: pointer;
+      path {
+        stroke: #5e96fc !important;
+      }
+    }
+    svg {
+      min-width: 24px;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    width: 315px;
+    height: 100%;
+  }
+}

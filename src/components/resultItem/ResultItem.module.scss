@@ -1,0 +1,67 @@
+@import "../../styles/colors.scss";
+
+.container {
+  color: inherit;
+  text-decoration: inherit;
+  min-height: 137px;
+  width: 773px;
+  border-radius: 12px;
+  padding: 24px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: space-between;
+  border: 1px solid #d5d6dc;
+
+  h4 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: $prime;
+  }
+
+  .town_container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .salary_container {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0px;
+  }
+
+  .point {
+    color: #7b7c88;
+    width: 10px;
+    padding: 0px 14px;
+    position: relative;
+    bottom: -2px;
+  }
+
+  .head_container {
+    display: flex;
+    justify-content: space-between;
+    div {
+      height: 100%;
+    }
+    svg {
+      margin-left: 5px;
+      border-radius: 50%;
+    }
+    svg:hover {
+      path {
+        stroke: #5e96fc !important;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    width: 315px;
+    height: 100%;
+  }
+}
