@@ -2,7 +2,7 @@ import { setSearchInput } from "@/redux/features/inputSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Button, TextInput } from "@mantine/core";
 import Image from "next/image";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import styles from "./SearchField.module.scss";
 
 interface SearchFieldProps {

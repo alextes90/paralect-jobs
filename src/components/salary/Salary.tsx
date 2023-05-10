@@ -2,18 +2,7 @@ import { SALARY } from "@/constants/defaultVal";
 import { setSalary } from "@/redux/features/inputSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { NumberInput } from "@mantine/core";
-import { Dispatch, SetStateAction } from "react";
 import styles from "./Salary.module.scss";
-
-// interface Salary {
-//   setSalary: Dispatch<
-//     SetStateAction<{ amountForm: number | ""; amountTill: number | "" }>
-//   >;
-//   salary: {
-//     amountForm: number | "";
-//     amountTill: number | "";
-//   };
-// }
 
 export default function Salary() {
   const dispatch = useAppDispatch();

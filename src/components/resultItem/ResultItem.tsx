@@ -2,7 +2,7 @@ import { ItemData } from "@/constants/api";
 import { LOCAL_STOR_KEY } from "@/constants/defaultVal";
 import Image from "next/image";
 import Link from "next/link";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import SaveIcon from "../saveIcon/SaveIcon";
 import styles from "./ResultItem.module.scss";
 

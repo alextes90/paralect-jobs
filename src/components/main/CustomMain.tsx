@@ -1,7 +1,7 @@
 import { Authorization, BASE_URL, SECRET_KEY } from "@/constants/api";
 import { setToken } from "@/redux/features/inputSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Search from "../search/Search";
 
 const LOCAL_KEY = "LOCAL_KEY_PARALECT";
