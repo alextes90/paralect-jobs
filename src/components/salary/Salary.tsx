@@ -42,6 +42,7 @@ export default function Salary() {
         }
         min={SALARY.amountForm}
         max={SALARY.amountTill}
+        step={1000}
         placeholder='До'
       />
     </div>
