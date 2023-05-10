@@ -27,7 +27,11 @@ export default function Salary() {
       />
       <NumberInput
         data-elem='salary-to-input'
-        value={salary.amountTill === SALARY.amountTill ? "" : salary.amountTill}
+        value={
+          salary.amountTill === SALARY.amountTill || salary.amountTill === 0
+            ? ""
+            : salary.amountTill
+        }
         onChange={(e: number | "") =>
           dispatch(
             setSalary({
