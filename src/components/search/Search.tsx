@@ -44,9 +44,9 @@ export default function Search() {
 
   return (
     <section className={styles.main}>
-      <Filter setRefresh={setRefresh} />
-      <div>
-        <SearchField setRefresh={setRefresh} />
+      <Filter setRefresh={setRefresh} setCurPage={setCurPage} />
+      <div className={styles.search}>
+        <SearchField setRefresh={setRefresh} setCurPage={setCurPage} />
         {isLoading ? (
           <div className={styles.loader}>
             <Loader size='lg' />

@@ -14,9 +14,10 @@ interface Salary {
 
 interface FilterProps {
   setRefresh: Dispatch<SetStateAction<boolean>>;
+  setCurPage: Dispatch<SetStateAction<number>>;
 }
 
-export default function Filter({ setRefresh }: FilterProps) {
+export default function Filter({ setRefresh, setCurPage }: FilterProps) {
   const dispatch = useAppDispatch();
 
   return (
@@ -50,6 +51,7 @@ export default function Filter({ setRefresh }: FilterProps) {
         data-elem='search-button'
         onClick={() => {
           setRefresh(true);
+          setCurPage(0);
         }}
       >
         Применить

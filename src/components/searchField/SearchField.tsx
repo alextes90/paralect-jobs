@@ -7,9 +7,13 @@ import styles from "./SearchField.module.scss";
 
 interface SearchFieldProps {
   setRefresh: Dispatch<SetStateAction<boolean>>;
+  setCurPage: Dispatch<SetStateAction<number>>;
 }
 
-export default function SearchField({ setRefresh }: SearchFieldProps) {
+export default function SearchField({
+  setRefresh,
+  setCurPage,
+}: SearchFieldProps) {
   const dispatch = useAppDispatch();
   const reduxVal = useAppSelector(
     (state) => state.inputSlicer.searchInput.value
@@ -30,6 +34,7 @@ export default function SearchField({ setRefresh }: SearchFieldProps) {
             data-elem='search-button'
             onClick={() => {
               setRefresh(true);
+              setCurPage(0);
             }}
             size='xs'
           >
