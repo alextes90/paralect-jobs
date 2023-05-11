@@ -1,5 +1,6 @@
 import VacancyHeader from "@/components/vacancyHeader/VacancyHeader";
 import { BASE_URL, SECRET_KEY, Authorization, ItemData } from "@/constants/api";
+import { Loader } from "@mantine/core";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from "./vacancy.module.scss";
@@ -51,7 +52,9 @@ export default function Home() {
           />
         </>
       ) : (
-        <div>Loading...</div>
+        <div>
+          <Loader />
+        </div>
       )}
     </main>
   );
