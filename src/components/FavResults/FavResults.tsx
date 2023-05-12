@@ -15,7 +15,7 @@ interface Event {
 export default function FavResults() {
   const router = useRouter();
   const [data, setData] = useState<ItemData[] | []>([]);
-
+  const [initReq, setInitReq] = useState(false);
   const [refresh, setRefresh] = useState<boolean>(false);
   const [curPage, setCurPage] = useState(0);
 
@@ -33,49 +33,58 @@ export default function FavResults() {
   useEffect(() => {
     const favVac = JSON.parse(localStorage.getItem(LOCAL_STOR_KEY) || "[]");
     setData(favVac);
+    setInitReq(true);
   }, [refresh]);
 
-  console.log(curPage);
-
   return (
-    <section className={styles.container}>
-      {data.length > 0 ? (
-        <>
-          {data
-            .filter(
-              (_, index) =>
-                index >= curPage * FAVORITES_PER_PAGE &&
-                index < (curPage + 1) * FAVORITES_PER_PAGE
-            )
-            .map((vac) => (
-              <ResultItem itemData={vac} key={vac.id} setRefresh={setRefresh} />
-            ))}
-          <div className={styles.pagination_container}>
-            <ReactPaginate
-              pageCount={Math.ceil(data.length / FAVORITES_PER_PAGE)}
-              breakLabel='...'
-              nextLabel='>'
-              previousLabel='<'
-              renderOnZeroPageCount={null}
-              marginPagesDisplayed={2}
-              onPageChange={pageChangeHandler}
-              forcePage={curPage}
-            />
-          </div>
-        </>
+    <>
+      {initReq ? (
+        <section className={styles.container}>
+          {data.length > 0 ? (
+            <>
+              {data
+                .filter(
+                  (_, index) =>
+                    index >= curPage * FAVORITES_PER_PAGE &&
+                    index < (curPage + 1) * FAVORITES_PER_PAGE
+                )
+                .map((vac) => (
+                  <ResultItem
+                    itemData={vac}
+                    key={vac.id}
+                    setRefresh={setRefresh}
+                  />
+                ))}
+              <div className={styles.pagination_container}>
+                <ReactPaginate
+                  pageCount={Math.ceil(data.length / FAVORITES_PER_PAGE)}
+                  breakLabel='...'
+                  nextLabel='>'
+                  previousLabel='<'
+                  renderOnZeroPageCount={null}
+                  marginPagesDisplayed={2}
+                  onPageChange={pageChangeHandler}
+                  forcePage={curPage}
+                />
+              </div>
+            </>
+          ) : (
+            <div className={styles.notFound}>
+              <NotFound />
+              <div>Упс, здесь еще ничего нет!</div>
+              <Button
+                onClick={() => {
+                  router.push("/");
+                }}
+              >
+                <span>Поиск Вакансий</span>
+              </Button>
+            </div>
+          )}
+        </section>
       ) : (
-        <div className={styles.notFound}>
-          <NotFound />
-          <div>Упс, здесь еще ничего нет!</div>
-          <Button
-            onClick={() => {
-              router.push("/");
-            }}
-          >
-            <span>Поиск Вакансий</span>
-          </Button>
-        </div>
+        ""
       )}
-    </section>
+    </>
   );
 }
