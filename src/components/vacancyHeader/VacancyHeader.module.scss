@@ -57,14 +57,21 @@
       height: 24px;
       border-radius: 50%;
     }
-    div:hover {
-      cursor: pointer;
-      path {
-        stroke: #5e96fc !important;
-      }
-    }
     svg {
       min-width: 24px;
+    }
+    button {
+      border: none;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: flex-end;
+      height: 100%;
+      cursor: pointer;
+      &:hover {
+        path {
+          stroke: #5e96fc !important;
+        }
+      }
     }
   }
 

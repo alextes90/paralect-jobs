@@ -28,7 +28,7 @@ export default function ResultItem({ itemData, setRefresh }: ResultItemProps) {
     ? true
     : false;
 
-  const onClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+  const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (isInFavArr) {
       const savedVac = favVac.filter((vacancy: ItemData) => vacancy.id !== id);
@@ -67,9 +67,9 @@ export default function ResultItem({ itemData, setRefresh }: ResultItemProps) {
         <h4>
           {profession} ({firm_name})
         </h4>
-        <div onClick={onClickHandler}>
+        <button onClick={onClickHandler}>
           <SaveIcon id={id} color={`${isInFavArr ? "#5E96FC" : ""}`} />
-        </div>
+        </button>
       </div>
       <div>
         <span className={styles.salary_container}>

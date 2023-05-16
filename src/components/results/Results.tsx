@@ -52,9 +52,9 @@ export default function Results({
         <div className={styles.pagination_container}>
           <ReactPaginate
             pageCount={
-              Math.ceil(displayedData.totalPage / ITEMS_PER_PAGE) < 124
+              Math.ceil(displayedData.totalPage / ITEMS_PER_PAGE) < 125
                 ? Math.ceil(displayedData.totalPage / ITEMS_PER_PAGE)
-                : 124
+                : 125
             }
             breakLabel='...'
             nextLabel='>'

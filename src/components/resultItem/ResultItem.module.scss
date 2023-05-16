@@ -46,9 +46,7 @@
   .head_container {
     display: flex;
     justify-content: space-between;
-    div {
-      height: 100%;
-    }
+
     svg {
       margin-left: 5px;
       border-radius: 50%;
@@ -57,6 +55,14 @@
       path {
         stroke: #5e96fc !important;
       }
+    }
+    button {
+      border: none;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: flex-end;
+      height: 100%;
+      cursor: pointer;
     }
   }
 
