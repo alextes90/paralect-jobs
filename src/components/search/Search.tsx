@@ -37,6 +37,7 @@ export default function Search() {
           setRefresh(false);
         })();
       } catch (err) {
+        localStorage.clear();
         console.error(err);
       }
     }
