@@ -1,5 +1,5 @@
 import { BASE_URL, SECRET_KEY, Authorization } from "@/constants/api";
-import { ITEMS_PER_PAGE, SALARY } from "@/constants/defaultVal";
+import { ITEMS_PER_PAGE, LOCAL_KEY, SALARY } from "@/constants/defaultVal";
 
 export const getVacancies = async (
   searchInput = "",
@@ -20,6 +20,10 @@ export const getVacancies = async (
       },
     }
   );
+  if (response.status === 410) {
+    localStorage.removeItem(LOCAL_KEY);
+    location.reload();
+  }
   if (!response.ok) {
     throw Error("Failed to fetch");
   }

@@ -1,10 +1,9 @@
 import { Authorization, BASE_URL, SECRET_KEY } from "@/constants/api";
+import { LOCAL_KEY } from "@/constants/defaultVal";
 import { setToken } from "@/redux/features/inputSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useEffect } from "react";
 import Search from "../search/Search";
-
-const LOCAL_KEY = "LOCAL_KEY_PARALECT";
 
 export default function CustomMain() {
   const dispatch = useAppDispatch();
@@ -28,6 +27,7 @@ export default function CustomMain() {
         const data = await response.json();
         dispatch(setToken(data.access_token));
         localStorage.setItem(LOCAL_KEY, data.access_token);
+        return;
       };
       try {
         getToken();
