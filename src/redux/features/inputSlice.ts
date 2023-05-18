@@ -1,9 +1,19 @@
 import { LOCAL_KEY, SALARY } from "@/constants/defaultVal";
 import { createSlice } from "@reduxjs/toolkit";
 
-let localKey = "";
+interface Token {
+  access_token: string;
+  expires_in: number;
+  ttl: number;
+}
+
+const initLocalToken = { access_token: "", expires_in: 0, ttl: 0 };
+
+let localKey: Token = initLocalToken;
 if (typeof window !== "undefined") {
-  localKey = localStorage.getItem(LOCAL_KEY) || "";
+  localKey = JSON.parse(
+    localStorage.getItem(LOCAL_KEY) || JSON.stringify(initLocalToken)
+  );
 }
 
 const initialState = {

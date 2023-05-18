@@ -18,9 +18,10 @@ export default function Search() {
   const [curPage, setCurPage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [refresh, setRefresh] = useState(true);
+  const curDay = Date.now();
 
   useEffect(() => {
-    if (token && refresh) {
+    if (token.access_token && refresh && curDay < token.ttl * 1000) {
       (async () => {
         setIsLoading(true);
         try {
@@ -28,7 +29,7 @@ export default function Search() {
             searchVal.value,
             category,
             salary,
-            token,
+            token.access_token,
             curPage
           );
           dispatch(
@@ -43,7 +44,17 @@ export default function Search() {
         }
       })();
     }
-  }, [token, searchVal, dispatch, curPage, refresh, category, salary]);
+  }, [
+    token.access_token,
+    searchVal,
+    dispatch,
+    curPage,
+    refresh,
+    category,
+    salary,
+    token.ttl,
+    curDay,
+  ]);
 
   return (
     <section className={styles.main}>

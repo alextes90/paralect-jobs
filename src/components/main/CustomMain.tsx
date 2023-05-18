@@ -9,9 +9,10 @@ import Search from "../search/Search";
 export default function CustomMain() {
   const dispatch = useAppDispatch();
   const token = useAppSelector((state) => state.inputSlicer.token);
+  const curDay = Date.now();
 
   useEffect(() => {
-    if (!token) {
+    if (!token.access_token || token.ttl * 1000 < curDay) {
       const getToken = async () => {
         const response = await fetch(
           `${BASE_URL}/2.0/oauth2/password/?login=${Authorization.login}&password=${Authorization.password}&client_id=${Authorization.client_id}&client_secret=${Authorization.client_secret}`,
@@ -26,8 +27,22 @@ export default function CustomMain() {
           throw Error("Failed to get token");
         }
         const data = await response.json();
-        dispatch(setToken(data.access_token));
-        localStorage.setItem(LOCAL_KEY, data.access_token);
+        console.log(data);
+        dispatch(
+          setToken({
+            access_token: data.access_token,
+            expires_in: data.expires_in,
+            ttl: data.ttl,
+          })
+        );
+        localStorage.setItem(
+          LOCAL_KEY,
+          JSON.stringify({
+            access_token: data.access_token,
+            expires_in: data.expires_in,
+            ttl: data.ttl,
+          })
+        );
         return;
       };
       (async () => {
@@ -41,7 +56,7 @@ export default function CustomMain() {
         }
       })();
     }
-  }, [token, dispatch]);
+  }, [token, dispatch, curDay]);
 
   return <Search />;
 }
