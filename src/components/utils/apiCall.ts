@@ -23,6 +23,7 @@ export const getVacancies = async (
   if (response.status === 410) {
     localStorage.removeItem(LOCAL_KEY);
     location.reload();
+    return;
   }
   if (!response.ok) {
     throw Error("Failed to fetch");

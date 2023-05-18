@@ -1,3 +1,4 @@
+import { setErrorMessage } from "@/redux/features/errorSlicer";
 import { setResultData } from "@/redux/features/inputSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Loader } from "@mantine/core";
@@ -20,9 +21,9 @@ export default function Search() {
 
   useEffect(() => {
     if (token && refresh) {
-      try {
-        (async () => {
-          setIsLoading(true);
+      (async () => {
+        setIsLoading(true);
+        try {
           const data = await getVacancies(
             searchVal.value,
             category,
@@ -33,13 +34,14 @@ export default function Search() {
           dispatch(
             setResultData({ data: data.objects, totalPage: data.total })
           );
+        } catch (err) {
+          dispatch(setErrorMessage("Failed to get vacancies"));
+          console.error(err);
+        } finally {
           setIsLoading(false);
           setRefresh(false);
-        })();
-      } catch (err) {
-        localStorage.clear();
-        console.error(err);
-      }
+        }
+      })();
     }
   }, [token, searchVal, dispatch, curPage, refresh, category, salary]);
 

@@ -1,7 +1,5 @@
-import { SALARY } from "@/constants/defaultVal";
+import { LOCAL_KEY, SALARY } from "@/constants/defaultVal";
 import { createSlice } from "@reduxjs/toolkit";
-
-const LOCAL_KEY = "LOCAL_KEY_PARALECT";
 
 let localKey = "";
 if (typeof window !== "undefined") {

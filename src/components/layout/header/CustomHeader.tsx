@@ -1,3 +1,4 @@
+import ErrorAlert from "@/components/errorAlert/ErrorAlert";
 import { BASE_URL, SECRET_KEY, Authorization } from "@/constants/api";
 import { setCategories } from "@/redux/features/inputSlice";
 import { useAppDispatch } from "@/redux/hooks";
@@ -61,6 +62,7 @@ const CustomHeader = () => {
           </li>
         </ul>
       </div>
+      <ErrorAlert />
     </nav>
   );
 };

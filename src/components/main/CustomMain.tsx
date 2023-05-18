@@ -1,5 +1,6 @@
 import { Authorization, BASE_URL, SECRET_KEY } from "@/constants/api";
 import { LOCAL_KEY } from "@/constants/defaultVal";
+import { setErrorMessage } from "@/redux/features/errorSlicer";
 import { setToken } from "@/redux/features/inputSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useEffect } from "react";
@@ -22,18 +23,23 @@ export default function CustomMain() {
           }
         );
         if (!response.ok) {
-          throw Error("Failed to fetch");
+          throw Error("Failed to get token");
         }
         const data = await response.json();
         dispatch(setToken(data.access_token));
         localStorage.setItem(LOCAL_KEY, data.access_token);
         return;
       };
-      try {
-        getToken();
-      } catch (err) {
-        console.error(err);
-      }
+      (async () => {
+        try {
+          await getToken();
+        } catch (err) {
+          dispatch(
+            setErrorMessage("Failed to receive token please refresh the page")
+          );
+          console.error(err);
+        }
+      })();
     }
   }, [token, dispatch]);
 
