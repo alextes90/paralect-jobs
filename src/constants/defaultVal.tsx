@@ -4,6 +4,6 @@ export const SALARY = {
 };
 
 export const LOCAL_STOR_KEY = "PAR_ALEX_TES_FAV_VAC";
-export const LOCAL_KEY = "LOCAL_KEY_PARALECT";
+export const LOCAL_KEY = "LOCAL_KEY_PARALECT_TOKEN";
 export const ITEMS_PER_PAGE = 4;
 export const FAVORITES_PER_PAGE = 4;
