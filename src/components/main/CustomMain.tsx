@@ -27,7 +27,6 @@ export default function CustomMain() {
           throw Error("Failed to get token");
         }
         const data = await response.json();
-        console.log(data);
         dispatch(
           setToken({
             access_token: data.access_token,
